@@ -20,8 +20,8 @@ Post data is local. Photos load from [Lorem Picsum](https://picsum.photos/), usi
 
 Read these files in order:
 
-1. `src/data/posts.js`: the data model and 36 reproducible posts. Each post has stable identity, an author, a caption, an ISO date, and image metadata. IDs identify posts; array positions do not.
-2. `src/api/feed.js`: `getInitialPosts()` waits 650 ms, then resolves to `{ items }`, containing six posts. This is an in-browser fake API, not an HTTP server. Returning a copy keeps UI changes from modifying the source dataset.
+1. `src/data/posts.js`: the data model and 53 reproducible posts. Each post has stable identity, an author, a caption, an ISO date, and image metadata. IDs identify posts; array positions do not.
+2. `src/api/feed.js`: `getInitialPosts()` waits 650 ms, then resolves to `{ items }`, containing all 53 posts. This is an in-browser fake API, not an HTTP server. Returning a copy keeps UI changes from modifying the source dataset.
 3. `src/components/Feed.jsx`: owns `posts` and `status`, calls the API in an effect, and maps results into components. Status is one of `loading`, `success`, or `error`, so contradictory loading/error flags cannot occur.
 4. `src/components/Post.jsx`: receives a post through props and renders it. It knows nothing about fetching.
 5. `src/App.jsx`: arranges the page. `src/styles.css` handles presentation and responsive layout.
@@ -49,7 +49,7 @@ Keep each checkpoint working before adding the next. No TanStack Query initially
 
 | Step | Build | Question to be able to answer |
 | --- | --- | --- |
-| 1 — current | Data model, async boundary, six-post feed, basic loading/error/empty states | Who owns data, and what causes a render? |
+| 1 — current | Data model, async boundary, 53-post feed, basic loading/error/empty states | Who owns data, and what causes a render? |
 | 2 | `getPosts({ cursor, limit })` returning `{ items, nextCursor, hasNextPage }` | Why can offset pagination skip or repeat posts when data changes? |
 | 3 | Load More, append results, prevent concurrent requests | Why must appending use the latest state? |
 | 4 | An IntersectionObserver sentinel, retaining an accessible Load More fallback | What happens when the sentinel stays visible during a request? |
@@ -67,4 +67,4 @@ Then walk through this case: fetch page 1, insert a newer post, fetch page 2. Id
 
 ## Deliberate boundaries at this checkpoint
 
-Only the first six posts are fetched once. Cursor pagination, Load More, IntersectionObserver, caching, prefetch, retries, deduplication, and virtualization are **not implemented yet**. They are sequential lessons, not hidden abstractions in the starter. The final collection message refers only to this initial batch, not to the end of the 36-post dataset.
+All 53 posts are fetched once. Cursor pagination, Load More, IntersectionObserver, caching, prefetch, retries, deduplication, and virtualization are **not implemented yet**. They are sequential lessons, not hidden abstractions in the starter. Pagination will split this dataset into smaller batches in the next lesson.

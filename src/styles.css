@@ -1,51 +1,173 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap');
 
-:root { font-family: 'DM Sans', sans-serif; color: #263b32; background: #f7f6f2; font-synthesis: none; }
-* { box-sizing: border-box; }
-body { margin: 0; }
-a { color: inherit; }
-.site-header { max-width: 1500px; margin: auto; min-height: 100px; padding: 24px 4%; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid #dedfd7; }
-.brand { display: flex; gap: 12px; align-items: center; text-decoration: none; font-size: 24px; font-weight: 600; letter-spacing: -1px; }
-.brand-mark { color: #fff; background: #254d3b; width: 37px; height: 37px; border-radius: 50%; text-align: center; font-family: Georgia, serif; font-size: 31px; }
-.brand-dot { align-self: flex-start; font-size: 11px; margin-left: -8px; }
-.header-note { font-size: 12px; color: #737b72; }
-.edition, .eyebrow, .issue { font-size: 10px; letter-spacing: 1.6px; font-weight: 600; }
-.edition { border: 1px solid #d3d9d0; border-radius: 24px; padding: 10px 14px; white-space: nowrap; }
-.layout { max-width: 1400px; padding: 54px 4% 0; margin: auto; display: grid; grid-template-columns: minmax(210px, 1fr) minmax(340px, 560px) minmax(180px, .75fr); gap: 42px; align-items: start; }
-.intro { position: sticky; top: 40px; padding-top: 12px; }
-.eyebrow { line-height: 1.8; }
-.green-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #708169; margin-right: 6px; }
-h1 { font-family: 'Libre Caslon Display', Georgia, serif; font-size: clamp(42px, 4vw, 62px); font-weight: 400; line-height: 1.02; letter-spacing: -1.8px; margin: 30px 0 24px; }
-.intro-copy, .editor-note, .about p { font-size: 13px; line-height: 1.9; color: #6c756c; }
-.intro-copy { max-width: 235px; }
-.intro-rule { width: 38px; height: 1px; background: #abb6a9; margin: 34px 0; }
-.editor-note { font-size: 12px; }
-.issue { display: block; color: #778371; margin-top: 48px; font-size: 9px; }
-.section-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 23px; }
-.section-heading h2 { font-size: 15px; font-weight: 500; margin: 0; }
-.muted { color: #757e73; font-size: 11px; }
-.post-list { display: grid; gap: 26px; }
-.post { background: #fffefa; border: 1px solid #e0e3da; border-radius: 6px; overflow: hidden; }
-.post-header { display: flex; align-items: center; gap: 10px; padding: 18px 20px; }
-.avatar { width: 34px; height: 34px; background: #e7eadd; border-radius: 50%; display: grid; place-items: center; font-size: 10px; font-weight: 600; }
-.post:nth-child(3n + 2) .avatar { background: #eae1d3; }
-.post:nth-child(3n + 3) .avatar { background: #dde6e6; }
-.post h3 { font-size: 12px; margin: 0 0 3px; font-weight: 600; }
-.post time { margin-left: auto; font-size: 10px; color: #757e73; }
-.post-image { display: block; width: 100%; height: auto; background: #e9ece3; }
-.post-copy { padding: 16px 20px 20px; }
-.post-copy p { font-size: 13px; line-height: 1.7; margin: 4px 0 0; }
-.post-copy .location { font-size: 9px; text-transform: uppercase; letter-spacing: 1.2px; color: #738167; margin: 0 0 8px; }
-.about { padding: 25px 0 0; border-top: 1px solid #a9b4a4; margin-top: 42px; }
-.about .eyebrow { font-size: 9px; margin-top: 0; }
-.about h2 { font-family: 'Libre Caslon Display', Georgia, serif; font-size: 28px; font-weight: 400; }
-.about-footer { border-top: 1px solid #d9ded3; margin-top: 30px; padding-top: 18px; font-size: 10px; }
-.about-footer span { float: right; }
-.feed-message, .feed-footer { text-align: center; padding: 48px 16px; font-size: 13px; line-height: 2; }
-.feed-message { border: 1px dashed #c7cfbf; border-radius: 6px; }
-.site-footer { padding: 30px; text-align: center; color: #757e73; font-size: 10px; border-top: 1px solid #dedfd7; }
-.skip-link { position: absolute; top: -60px; left: 20px; padding: 12px; background: white; z-index: 10; }
-.skip-link:focus { top: 10px; }
-:focus-visible { outline: 2px solid #254d3b; outline-offset: 4px; }
-@media (max-width: 1100px) { .layout { grid-template-columns: minmax(200px, 1fr) minmax(340px, 560px); gap: 32px; } .about { display: none; } .header-note { display: none; } }
-@media (max-width: 700px) { .site-header { min-height: 78px; padding: 20px; } .brand { font-size: 21px; } .edition { font-size: 8px; padding: 8px; letter-spacing: .8px; } .layout { display: block; padding: 28px 18px 0; } .intro { position: static; padding: 0 0 32px; } h1 { font-size: 48px; margin: 18px 0; } .intro-copy { max-width: 320px; } .intro-rule, .editor-note, .issue { display: none; } .post-header { padding: 15px; } .post-copy { padding: 15px; } }
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #263b32;
+  background: #f7f6f2;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+a {
+  color: inherit;
+}
+.site-header {
+  max-width: 1500px;
+  margin: auto;
+  min-height: 100px;
+  padding: 24px 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid #dedfd7;
+}
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+.brand-mark {
+  color: #fff;
+  background: #254d3b;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 31px;
+}
+.brand-dot {
+  align-self: flex-start;
+  font-size: 11px;
+  margin-left: -8px;
+}
+.header-note {
+  font-size: 12px;
+  color: #737b72;
+}
+.edition {
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  font-weight: 600;
+}
+.edition {
+  border: 1px solid #d3d9d0;
+  border-radius: 24px;
+  padding: 10px 14px;
+  white-space: nowrap;
+}
+.layout {
+  max-width: 448px;
+  padding: 32px 24px;
+  margin: auto;
+}
+h1 {
+  font-family: 'Libre Caslon Display', Georgia, serif;
+  font-size: clamp(42px, 4vw, 62px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -1.8px;
+  margin: 30px 0 24px;
+}
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 23px;
+}
+.muted {
+  color: #757e73;
+  font-size: 11px;
+}
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.post {
+  border: 1px solid grey;
+  width: 100%;
+}
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 20px;
+}
+.avatar {
+  width: 34px;
+  height: 34px;
+  background: #e7eadd;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  font-weight: 600;
+}
+.post-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #e9ece3;
+}
+.post-copy {
+  padding: 16px 20px 20px;
+}
+.post-copy p {
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 4px 0 0;
+}
+.post-copy .location {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #738167;
+  margin: 0 0 8px;
+}
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 20px;
+  padding: 12px;
+  background: white;
+  z-index: 10;
+}
+.skip-link:focus {
+  top: 10px;
+}
+:focus-visible {
+  outline: 2px solid #254d3b;
+  outline-offset: 4px;
+}
+
+@media (max-width: 1100px) {.header-note {
+  display: none;
+}
+ }
+@media (max-width: 700px) {.site-header {
+  min-height: 78px;
+  padding: 20px;
+}
+.brand {
+  font-size: 21px;
+}
+.edition {
+  font-size: 8px;
+  padding: 8px;
+  letter-spacing: .8px;
+}
+.post-header, .post-copy {
+  padding: 15px;
+}
+ }
