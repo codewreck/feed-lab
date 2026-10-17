@@ -1,6 +1,7 @@
 import React from "react";
 import File from "./File.jsx";
 import Folder from "./Folder.jsx";
+import { moveNode } from "./utils.js";
 
 const initialNodes = [
   {
@@ -118,6 +119,9 @@ const FolderStructure = () => {
   const handleAddNew = (newNode, parentId) => {
     setNodes((prev) => insertNode(prev, parentId, newNode));
   };
+  const handleMoveNode = (draggedId, destinationId) => {
+    setNodes((nodes) => moveNode(nodes, draggedId, destinationId));
+  };
 
   const myVisibleNodes = getVisibleNodes(nodes, openFolders);
   //   const nextNodeId = getNextNodeId(currentId, myVisibleNodes);
@@ -155,6 +159,7 @@ const FolderStructure = () => {
               handleAddNew={handleAddNew}
               itemRefs={itemRefs}
               activeNodeId={activeNodeId}
+              handleMoveNode={handleMoveNode}
             />
           );
         } else if (node.type === "file") {

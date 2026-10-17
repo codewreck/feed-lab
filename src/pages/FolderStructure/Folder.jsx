@@ -8,6 +8,7 @@ const Folder = ({
   handleAddNew,
   itemRefs,
   activeNodeId,
+  handleMoveNode,
 }) => {
   const [isAdding, setIsAdding] = React.useState(null);
   const [name, setName] = React.useState("");
@@ -66,6 +67,35 @@ const Folder = ({
         }}
         data-node-id={folder.id}
         tabIndex={activeNodeId === folder.id ? 0 : -1}
+        draggable
+        onDragOver={(e) => {
+          // to allow drop on folder
+          e.preventDefault();
+
+          console.log("onDragOver", e);
+        }}
+        onDragStart={(e) => {
+          // Identify the dragged node
+          e.dataTransfer.setData("text/plain", folder.id);
+
+          console.log("onDragStart", e.target.dataset.nodeId);
+        }}
+        onDrop={
+          (e) => {
+            console.log("onDrop", e);
+            e.preventDefault();
+            e.stopPropagation();
+            const draggedId = e.dataTransfer.getData("text/plain");
+
+            console.log("draggedId", draggedId);
+            console.log("Destination ID:", folder.id);
+            handleMoveNode(draggedId, folder.id);
+          }
+          // 1 prevent the browers default behaviour of drop
+          // 2 stop the event from bubbling up
+          // log the dragged node id
+          // log the source id and teh destination folder id
+        }
       >
         📂{folder.name}
       </button>
@@ -130,6 +160,7 @@ const Folder = ({
                     handleAddNew={handleAddNew}
                     itemRefs={itemRefs}
                     activeNodeId={activeNodeId}
+                    handleMoveNode={handleMoveNode}
                   />
                 </div>
               );
