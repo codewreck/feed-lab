@@ -7,6 +7,7 @@ import Experiment from "../pages/Experiment.jsx";
 // import Virtualization from "../pages/Virtualization.jsx";
 import FileExplorer from "../pages/FileExplorer/FileExplorer.jsx";
 import FolderStructure from "../pages/FolderStructure/FolderStructure.jsx";
+import Container from "../pages/Feed/Container.jsx";
 
 export default function AppRoutes() {
   return (
@@ -18,6 +19,7 @@ export default function AppRoutes() {
         {/* <Route path="virtualization" element={<Virtualization />} /> */}
         {/* <Route path="explorer" element={<FileExplorer />} /> */}
         <Route path="explorer" element={<FolderStructure />} />
+        <Route path="instagram" element={<Container />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
